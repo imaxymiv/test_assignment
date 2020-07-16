@@ -11,6 +11,13 @@ import java.util.stream.Stream;
 @UtilityClass
 public class StringFormatter {
 
+    /**
+     * @param stringToParse raw string po parse
+     * @return List of maps where each "%" separated object is a separate map inside which each ":"
+     * separated object is mapped to key/value (key is object before ":" and value is object after ":")
+     *
+     * if value is empty it's replaced on empty string. In terms of int it'll be 0;
+     */
     public static List<Map<String, String>> getFormattedString(String stringToParse) {
         return Stream.of(stringToParse.split("%")).collect(Collectors.toList())
                 .stream().map(s -> s.split(","))
